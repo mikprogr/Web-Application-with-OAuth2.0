@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analiza Bezpieczenstwa BAW - OAuth 2.0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header class="app-header">
+            <h1>Integracja i Walidacja OAuth 2.0 / OIDC</h1>
+            <div class="session-status-bar">
+                <span id="session-status" class="status-indicator">Inicjalizacja...</span>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <section id="login-panel" class="app-card text-center hidden">
+                <h2>Logowanie do Systemu</h2>
+                <p class="description">
+                    Aplikacja integruje sie z zewnetrznym dostawca tozsamosci Keycloak. Klikniecie ponizszego przycisku przekieruje do bezpiecznego ekranu uwierzytelniania w domenie serwera tozsamosci.
+                </p>
+                <button id="btn-login" class="btn btn-primary">Zaloguj sie przez Keycloak 26</button>
+            </section>
+
+            <section id="dashboard-panel" class="app-card hidden">
+                <div class="dashboard-header">
+                    <h2>Panel Kontrolny (Dashboard)</h2>
+                    <button id="btn-logout" class="btn btn-danger">Wyloguj sie</button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="grid-column">
+                        <h3>Zaszyfrowany Profil Uzytkownika (JWT Payload)</h3>
+                        <table class="profile-table">
+                            <tr>
+                                <td><strong>Identyfikator (Sub):</strong></td>
+                                <td id="profile-sub">N/A</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nazwa uzytkownika:</strong></td>
+                                <td id="profile-username">N/A</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adres Email:</strong></td>
+                                <td id="profile-email">N/A</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Przypisane role:</strong></td>
+                                <td><span id="profile-roles" class="role-badge">N/A</span></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="grid-column">
+                        <h3>Testowanie modelu uprawnien RBAC</h3>
+                        <p class="helper-text">Wykonaj testowe zapytania autoryzowane do zabezpieczonych punktów koncowych serwera API:</p>
+                        <div class="action-buttons">
+                            <button id="btn-fetch-user" class="btn btn-interactive">Pobierz dane /api/user-data</button>
+                            <button id="btn-fetch-admin" class="btn btn-warning">Pobierz dane /api/admin-data</button>
+                        </div>
+                        <div class="response-container">
+                            <h4>Naglowek i odpowiedz serwera zasobów:</h4>
+                            <pre id="api-output-box">Wybierz akcje powyzej...</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

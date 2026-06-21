@@ -1,0 +1,66 @@
+{
+  "id": "moj-realm-id",
+  "realm": "moj-realm",
+  "displayName": "Projekt Bezpieczenstwa BAW",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "roles": {
+    "realm": [
+      {
+        "id": "role-admin-id",
+        "name": "admin",
+        "description": "Pelne uprawnienia zarzadzania zasobami - rola Manager"
+      },
+      {
+        "id": "role-user-id",
+        "name": "user",
+        "description": "Ograniczone uprawnienia odczytu - rola Uzytkownik"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "moj-frontend-client",
+      "name": "Projekt Frontend",
+      "baseUrl": "http://localhost",
+      "redirectUris": [
+        "http://localhost/*"
+      ],
+      "webOrigins": [
+        "http://localhost"
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "testuser",
+      "email": "test@example.com",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "testpass123"
+        }
+      ],
+      "realmRoles": [
+        "user"
+      ]
+    },
+    {
+      "username": "admin",
+      "email": "admin@example.com",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin123"
+        }
+      ],
+      "realmRoles": [
+        "admin",
+        "user"
+      ]
+    }
+  ]
+}
